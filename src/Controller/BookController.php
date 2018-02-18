@@ -100,4 +100,20 @@ class BookController extends Controller
         ]);
 
     }
+
+    /**
+     * Delete Book
+     *
+     * @param Book $book
+     * @return Response
+     *
+     * @Route("/displayBook/delete/{id}", name="deleteBook")
+     */
+    public function deleteBookAction(Book $book){
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($book);
+        $em->flush();
+
+        Return new Response('Livre supprimé');
+    }
 }

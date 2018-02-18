@@ -27,7 +27,7 @@
 
                    <td>{{ book.dateEdit|date("m/d/Y") }} </td>
                    <td><a href="{{ path('editBook', {'id':book.getId}) }}">Edit</a></td>
-                   <td><a href="">Delete</a></td>
+                   <td><a href="{{ path('deleteBook', {'id':book.getId}) }}">Delete</a></td>
 
 
                </tr>
