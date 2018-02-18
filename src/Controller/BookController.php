@@ -19,10 +19,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class BookController extends Controller
 {
     /**
+     * Add Book
+     *
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/", name="homepage")
+     * @Route("/addBook", name="addBook")
      */
-    public function homeAction(Request $request){
+    public function addBookAction(Request $request){
 
         //Creation du livre
         $book = new Book();
@@ -45,8 +47,23 @@ class BookController extends Controller
         //Génerer html du form creer
         $formView = $form->createView();
 
-        return $this->render('views/home.html.twig', [
+        return $this->render('views/addBook.html.twig', [
             'form' => $formView
+        ]);
+    }
+
+    /**
+     * Display Book
+     *
+     * @Route("/", name="displayBook")
+     */
+    public function displayBookAction(){
+        $repository = $this->getDoctrine()->getRepository(Book::class);
+
+        $book = $repository->findAll();
+
+        return $this->render('views/displayBook.html.twig', [
+            'books' => $book
         ]);
     }
 }

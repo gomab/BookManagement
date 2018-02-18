@@ -1,0 +1,39 @@
+{%  extends 'base.html.twig'%}
+
+
+{% block body %}
+    <div class="">
+
+        <h1>Show Product</h1>
+            <p>{{ "now"|date("m/d/Y") }}</p>
+       <table>
+           <tr>
+               <td>Title</td>
+               <td>Author</td>
+               <td>Description</td>
+               <td>Price</td>
+               <td>Date Edition</td>
+               <td>Action</td>
+
+           </tr>
+
+           {% for book in books %}
+
+               <tr>
+                   <td><a href="">{{ book.title }}</a></td>
+                   <td><a href="">{{ book.author }}</a></td>
+                   <td><a href="">{{ book.description }}</a></td>
+                   <td><a href="">{{ book.price }}</a></td>
+
+                   <td>{{ book.dateEdit|date("m/d/Y") }} </td>
+                   <td><a href="">Edit</a></td>
+                   <td><a href="">Delete</a></td>
+
+
+               </tr>
+           {% endfor %}
+       </table>
+        <br>
+       <a href="{{ path('addBook') }}"><button>Add book</button></a>
+    </div>
+{% endblock %}
