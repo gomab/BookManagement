@@ -66,4 +66,38 @@ class BookController extends Controller
             'books' => $book
         ]);
     }
+
+    /**
+     * Edit book
+     *
+     * @param Request $request
+     * @return Response
+     *
+     * @Route("/displayBook/edit/{id}", name="editBook")
+     */
+    public function editBookAction(Request $request, Book $book){
+
+        //Create form
+        $form = $this->createForm(BookType::class, $book);
+
+        //To link object to request
+        $form->handleRequest($request);
+
+        //Send form
+        if($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            return new Response('Book modifie');
+        }
+
+        //Generate html form
+        $formView = $form->createView();
+
+        //rendu de la vue
+        return $this->render('views/editBook.html.twig', [
+            'form' => $formView
+        ]);
+
+    }
 }
