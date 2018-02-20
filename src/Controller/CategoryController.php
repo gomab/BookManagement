@@ -51,4 +51,18 @@ class CategoryController extends Controller
         ]);
 
     }
+
+    /**
+     * @return Response
+     *
+     * @Route("/displayCategory", name="displayCategory")
+     */
+    public function displayCategory(){
+       $repository = $this->getDoctrine()->getRepository(Category::class);
+       $category = $repository->findAll();
+
+       return $this->render('views/displayCategory.html.twig', [
+           'categorys' => $category
+       ]);
+    }
 }
