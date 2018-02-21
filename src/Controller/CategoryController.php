@@ -40,7 +40,8 @@ class CategoryController extends Controller
             $em->persist($category);
             $em->flush();
 
-            return new Response('Categorie cree');
+            //return new Response('Categorie cree');
+            return $this->redirect('displayCategory');
         }
 
         //Generation du html form
