@@ -23,7 +23,10 @@ class CategoryController extends Controller
      * @return Response
      *
      * @Route("addCat", name="addCategory")
+     *
      */
+
+
     public function addCategory(Request $request){
         //Create Category
         $category = new Category();
@@ -48,7 +51,7 @@ class CategoryController extends Controller
         $createViews = $form->createView();
 
         return $this->render('views/addCategory.html.twig', [
-            'form' => $createViews
+            'form' => $createViews,
         ]);
 
     }
@@ -100,7 +103,11 @@ class CategoryController extends Controller
              * return $response;
              */
             //Return new Response('Cate modifie');
-            Return $this->redirectToRoute('displayCategory');
+
+            $msg = "Edition réussie";
+            Return $this->redirectToRoute('displayCategory', [
+                'msg' => $msg
+            ]);
         }
 
         $formViews = $form->createView();

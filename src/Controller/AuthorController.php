@@ -9,7 +9,9 @@
 namespace App\Controller;
 
 
-class AuthorController
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class AuthorController extends Controller
 {
 
 }
